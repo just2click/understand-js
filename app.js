@@ -1,6 +1,5 @@
 function b() {
-    var myVar;
-    console.log();
+    console.log(myVar);
 }
 
 function a() {
