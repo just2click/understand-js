@@ -1,11 +1,22 @@
-function b() {
-    console.log(myVar);
+var a = 0;
+var b = false;
+
+if (a == b) {
+    console.log('They are equal!')
+} else {
+    console.log('Nopem not equal!')
 }
 
-function a() {
-    var myVar = 2;
-    b();
+// Strict equality
+if (a === b) {
+    console.log('They are equal!')
+} else {
+    console.log('Nope, not equal!')
 }
 
-var myVar = 1;
-a();
+// Strict not equal
+if (a !== b) {
+    console.log('They are not equal!')
+} else {
+    console.log('Equal!')
+}
