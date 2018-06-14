@@ -1,11 +1,2 @@
-function greet(name) {
-    // set a default value
-    name = name || '<your name here>';
-    console.log('Hello ' + name);
-}
-
-// Normal call
-greet ('Dror');
-
-// Call with no value - console log will return 'Hello undefined'
-greet();
+// We get the second lib name as the two names are equal, thus they "run" over each other
+console.log(libraryName);
