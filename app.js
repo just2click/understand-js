@@ -1,22 +1,18 @@
-var a = 0;
-var b = false;
+var a;
 
-if (a == b) {
-    console.log('They are equal!')
-} else {
-    console.log('Nopem not equal!')
+// Goes to the internet and looks for a value
+
+// Will print log if a is either: null, undefined, false or 0
+// or a = "" (zero length string)
+
+if (a) {
+    console.log('a exists');
 }
 
-// Strict equality
-if (a === b) {
-    console.log('They are equal!')
-} else {
-    console.log('Nope, not equal!')
-}
+// Handle the situation that 'a' equals zero which is coarsed to
+// false but maybe a valid value
+a = 0;
 
-// Strict not equal
-if (a !== b) {
-    console.log('They are not equal!')
-} else {
-    console.log('Equal!')
+if (a || a === 0) {
+    console.log('a exists (or)');
 }
