@@ -1,18 +1,11 @@
-var a;
-
-// Goes to the internet and looks for a value
-
-// Will print log if a is either: null, undefined, false or 0
-// or a = "" (zero length string)
-
-if (a) {
-    console.log('a exists');
+function greet(name) {
+    // set a default value
+    name = name || '<your name here>';
+    console.log('Hello ' + name);
 }
 
-// Handle the situation that 'a' equals zero which is coarsed to
-// false but maybe a valid value
-a = 0;
+// Normal call
+greet ('Dror');
 
-if (a || a === 0) {
-    console.log('a exists (or)');
-}
+// Call with no value - console log will return 'Hello undefined'
+greet();
