@@ -1,58 +1,18 @@
-function a() {
-    console.log(this);
-    this.someValue = 'Hello';
-}
-
-var b = function() {
-    console.log(this);
-}
-
-// This is showing the Window object as it is in the
-// general scope
-a();
-
-// Adding a value like we did before simply attaches
-// this value to the Window
-console.log(someValue);
-
-b();
-
-// In this scenario will see that the value changes
-// as javascript looks 'up' the chain ti find this.
-var c = {
-    name: 'The c object',
-    log: function () {
-        this.name = 'Updated c object';
-        console.log(this);
-    }
-}
-
-c.log();
-
-var d = {
-    name: 'The d object',
-    log: function () {
-        var self = this;    // Would help us save use the correct this
-        // Replace all this with self inside the log: function ()
+// An array can have all kinds of object types, including functions which are basically objects
+var arr = [
+    1,
+    false,
+    {
+        name: 'Dror',
+        address: 'Yael Rom st. 9'
+    },
+    function (name) {
+        var greetings = "Hello ";
         
-        //this.name = 'Updated d object';
-        self.name = 'Updated d object';
-        //console.log(this);
-        console.log(self);
+        console.log(greetings + name);
+    },
+    'Hello'
+];
 
-        // Since the this is correctly set nothing changes
-        var setname = function(name) {
-            //this.name = name;
-            self.name = name;
-        }
-        
-        setname('Update d object again');
-        //console.log(this);
-        console.log(self);        
-        
-    }
-    
-    
-}
-
-d.log();
+console.log(arr);
+arr[3](arr[2].name);
