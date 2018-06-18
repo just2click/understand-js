@@ -1,44 +1,18 @@
-function buildFunctions() {
-    var arr= [];
-    
-    for (var i = 0; i < 3; i++) {
-        // Using let is it is block scoped
-        let j = i;
-        arr.push(
-            function () {
-                console.log(j);
-            }
-        )
+function makGreeting(language) {
+    return function (firstName, lastName) {
+        if (language === 'en') {
+            console.log('Hello ' + firstName + ', ' + lastName);
+        }
+        
+        if (language === 'es') {
+            console.log('Hola ' + firstName + ', ' + lastName);
+        }        
     }
-    
-    return arr;
 }
 
-var fs = buildFunctions();
+var greetEnglish = makGreeting('en');
+var greetSpanish = makGreeting('es');
 
-fs[0]();
-fs[1]();
-fs[2]();
+greetEnglish('Dror', 'Avidov');
 
-
-function buildFunctions2() {
-    var arr= [];
-    
-    for (var i = 0; i < 3; i++) {
-        arr.push(
-            (function (j) {
-                return function () {
-                    console.log(j);
-                }
-            }(i))
-        )
-    }
-    
-    return arr;
-}
-
-var fs2 = buildFunctions2();
-
-fs2[0]();
-fs2[1]();
-fs2[2]();
+greetSpanish('Roey', 'Avidov');
