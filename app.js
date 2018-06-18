@@ -1,30 +1,16 @@
-// function statement
-function greet(name) {
-    console.log('Hello ' + name);
-}
-
-greet('Jhon');
-
-// using a function expression
-var greetFunc = function(name) {
-    console.log('Hi ' + name);
-}
-
-greetFunc('Jhon');
-
-// using an Immediately Invoked Function Expression (IIFE)
-var greeting = function(name) {
-    //console.log('Hola ' + name);
-    return ('Hola ' + name);
-}('Jhon');
-
-
-console.log(greeting);
 
 var firstName = 'Dror';
 
 // A valid function expression
 (function(name) {
-    var message = 'Shalom';
-    console.log(message + ' ' + name);
+    var greeting = 'Shalom';
+    console.log(greeting + ' ' + name);
 }(firstName));
+
+// Another IIFE with a different execution context
+// We can send in a reference to an external context
+(function(global, name) {
+    // We can then on porpuse change the global parameter
+    global.greeting = 'Hello';
+    console.log(global.greeting + ' ' + name);
+}(window, firstName));
