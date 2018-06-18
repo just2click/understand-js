@@ -1,24 +1,30 @@
-function greet(firstName, lastName, language) {
-    
-    // Default language if missing
-    language = language || 'en';
-    
-    // If no params were sent return
-    if (arguments.length === 0) {
-        console.log('No argumanets');
-        console.log('--------------')
-    }
-    
-    console.log(firstName);
-    console.log(lastName);
-    console.log(language);
-    console.log(arguments);
-    console.log('argumnets[0]: ' + arguments[0]);
-    console.log('--------------')
+// function statement
+function greet(name) {
+    console.log('Hello ' + name);
 }
 
-greet();
 greet('Jhon');
-greet('Jhon', 'Doe');
-greet('Jhon', 'Doe', 'es');
-greet('Jhon', 'Doe', 'es', 'Main st 222', 'Ney York');
+
+// using a function expression
+var greetFunc = function(name) {
+    console.log('Hi ' + name);
+}
+
+greetFunc('Jhon');
+
+// using an Immediately Invoked Function Expression (IIFE)
+var greeting = function(name) {
+    //console.log('Hola ' + name);
+    return ('Hola ' + name);
+}('Jhon');
+
+
+console.log(greeting);
+
+var firstName = 'Dror';
+
+// A valid function expression
+(function(name) {
+    var message = 'Shalom';
+    console.log(message + ' ' + name);
+}(firstName));
