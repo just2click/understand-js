@@ -1,16 +1,12 @@
+function greet(whatToSay) {
+    return function(name) {
+        console.log(whatToSay + ' ' + name);
+    }
+}
 
-var firstName = 'Dror';
+// Calling a function that returns a function
+greet("Hi")("Dror");
 
-// A valid function expression
-(function(name) {
-    var greeting = 'Shalom';
-    console.log(greeting + ' ' + name);
-}(firstName));
+var sayHi = greet('Hi');
 
-// Another IIFE with a different execution context
-// We can send in a reference to an external context
-(function(global, name) {
-    // We can then on porpuse change the global parameter
-    global.greeting = 'Hello';
-    console.log(global.greeting + ' ' + name);
-}(window, firstName));
+sayHi('Dror');
