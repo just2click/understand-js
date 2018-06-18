@@ -1,12 +1,44 @@
-function greet(whatToSay) {
-    return function(name) {
-        console.log(whatToSay + ' ' + name);
+function buildFunctions() {
+    var arr= [];
+    
+    for (var i = 0; i < 3; i++) {
+        // Using let is it is block scoped
+        let j = i;
+        arr.push(
+            function () {
+                console.log(j);
+            }
+        )
     }
+    
+    return arr;
 }
 
-// Calling a function that returns a function
-greet("Hi")("Dror");
+var fs = buildFunctions();
 
-var sayHi = greet('Hi');
+fs[0]();
+fs[1]();
+fs[2]();
 
-sayHi('Dror');
+
+function buildFunctions2() {
+    var arr= [];
+    
+    for (var i = 0; i < 3; i++) {
+        arr.push(
+            (function (j) {
+                return function () {
+                    console.log(j);
+                }
+            }(i))
+        )
+    }
+    
+    return arr;
+}
+
+var fs2 = buildFunctions2();
+
+fs2[0]();
+fs2[1]();
+fs2[2]();
