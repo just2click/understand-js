@@ -1,71 +1,52 @@
-var person = {
-    firstName: 'Jhon',
-    lastName: 'Doe',
-    
-    getFullName () {
-        var fullName = this.firstName + ' ' + this.lastName;
-        
-        return fullName;
+// Functional programming
+function mapForEach(arr, fn) {
+    var newArr = [];
+
+    for (var i = 0; i < arr.length; i++) {
+        newArr.push(fn(arr[i]))   
     }
+    
+    return newArr;
+    
 }
 
-var logName = function(lang1, lang2) {
-    // This will fail as the getFullName method isn't
-    // a function on the global scope
-    console.log('Logged: ' + this.getFullName());
-    console.log('Argumanets: ' + lang1 + ' ' + lang2);
-    console.log('---------');
+var arr1 = [1, 2, 3];
+console.log(arr1);
+
+var arr2 = [];
+for (var i = 0; i < arr1.length; i++) {
+    arr2.push(arr1[i] * 2);
 }
 
-// Bind creates a copy of the method and sends in the this reference
-var logPersonName = logName.bind(person);
+console.log(arr2);
 
-// JUst call the binded function
-logPersonName();
+// Using mapForEach
+var arr3 = mapForEach(arr1, function (item) {
+   return item * 2; 
+});
+    
+console.log(arr3);
 
-// Add a lang1
-logPersonName('en');
+// Using mapForEach with a different action, not a mathemathical operation
+var arr4 = mapForEach(arr1, function (item) {
+   return item > 2; 
+});
+    
+console.log(arr4);
 
-// Call invokes the function with the params we sent
-
-// The call lets us set who is the 'this' in this function execution context
-logName.call(person);
-
-// We can also send more params
-logName.call(person, 'en', 'es');
-
-// Apply does the same as call but it takes the extra params in an array
-logName.apply(person, ['en', 'es']);
-
-// We can also use it as IIFE
-(function(lang1, lang2) {
-    // This will fail as the getFullName method isn't
-    // a function on the global scope
-    console.log('Logged: ' + this.getFullName());
-    console.log('Argumanets: ' + lang1 + ' ' + lang2);
-    console.log('---------');
-}).apply(person, ['en', 'es']);
-
-
-// Function borrowing
-var person2 = {
-    firstName: 'Jane',
-    lastName: 'Flow',
+var checkPastLimit = function (limiter, item) {
+    return item > limiter;
 }
 
-console.log(person.getFullName.apply(person2));
+var arr5 = mapForEach(arr1, checkPastLimit.bind(this, 1));
 
-// Function currying
-function multiply (a, b) {
-    return a * b;
+console.log('binded: ', arr5);
+
+// Exercise
+var checkLimiter = function (limiter) {
+    return checkPastLimit.bind(this, limiter);
 }
 
-// Setting the '2' number like this will set this method to always
-// multiple by two
-var multiplyByTwo = multiply.bind(this, 2);
+var arr6 = mapForEach(arr1, checkLimiter(3));
 
-console.log(multiplyByTwo(5));
-
-var multiplyByThree = multiply.bind(this, 3);
-
-console.log(multiplyByThree(5));
+console.log('wrapped: ', arr6);
