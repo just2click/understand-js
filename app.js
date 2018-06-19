@@ -50,3 +50,18 @@ var checkLimiter = function (limiter) {
 var arr6 = mapForEach(arr1, checkLimiter(3));
 
 console.log('wrapped: ', arr6);
+
+
+//-----------------------------//
+// Functional programming with underscore
+var arr7 = _.map(arr1, function(item) {
+    return item * 4;
+});
+
+console.log('With underscore: ', arr7);
+
+var arr8 = _.filter([1, 2, 3, 4, 5, 6, 7], function (item) {
+    return item % 2 === 0;
+});
+
+console.log('With underscore filter: ', arr8);
