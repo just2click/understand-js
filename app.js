@@ -1,26 +1,22 @@
-function sayHiLater () {
-    var greeting = 'Hi';
+var person = {
+    firstName: 'Jhon',
+    lastName: 'Doe',
     
-    setTimeout(function () {
-        console.log(greeting);
-    }, 3000);
+    getFullName () {
+        var fullName = this.firstName + ' ' + this.lastName;
+        
+        return fullName;
+    }
 }
 
-sayHiLater();
-
-// jQuery uses function expressions and first-class functions
-// Example:
-//$("button").click(function () {
-
-//});
-
-function tellMeWhenDone(cb) {
-    var a = 1000;   // Do something
-    var b = 2000;   // Do something
-    
-    cb();   // cll the callback (i.e. cb), it runs  the function I gave it
+var logName = function(lang1, lang2) {
+    // This will fail as the getFullName method isn't
+    // a function on the global scope
+    console.log('Logged: ' + this.getFullName());
 }
 
-tellMeWhenDone(function () {
-    console.log('Done!');
-})
+var logPersonName = logName.bind(person);
+
+logPersonName();
+
+logName();
