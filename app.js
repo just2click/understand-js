@@ -1,11 +1,12 @@
-String.prototype.isLengthGreaterThan = function (limit) {
-    return this.length > limit;
+// Adding custom feature to Array prototype can be problemait
+// as it may colide with exusting libraries
+
+Array.prototype.myCustomFeatre = 'cool!';
+
+var arr = ['John', 'Jane', 'Jim'];
+
+for (var prop in arr) {
+    console.log(prop + ': ' + arr[prop]);
 }
 
-console.log("Dror Avidov".isLengthGreaterThan(8));
-
-Number.prototype.isPositive = function () {
-    return this > 0;
-}
-
-console.log(Number(-1).isPositive());
+// For arries used a standart for loop
