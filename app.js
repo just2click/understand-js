@@ -1,25 +1,23 @@
-var people = [
-    { 
-        // the John object
-        firtsname: 'John',
-        lastname: 'Doe',
-        addresses: [
-            '111 Main st.',
-            '222 Third st.'
-        ]
-    },
-    {
-        // the Jane object
-        firtsname: 'Jane',
-        lastname: 'Doe',
-        addresses: [
-            '333 Main st.',
-            '444 Fifth st.'
-        ],
-        greet: function () {
-            return 'Hello!';
-        }
-    }
-]
+var a = 3;
+console.log(typeof a);
 
-console.log(people);
+var b = 'Hello';
+console.log(typeof b);
+
+var c = {};
+console.log(typeof c);
+
+var d = [];
+console.log(typeof d); // weird!
+console.log(Object.prototype.toString.call(d)); // Better;
+
+function Person(name) {
+    this.name = name;
+}
+
+var e = new Person('Jane');
+console.log(typeof e);
+console.log(e instanceof Person);
+
+console.log(typeof undefined);  // Makes sense
+console.log(typeof null); // an old bug
